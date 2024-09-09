@@ -1,0 +1,24 @@
+﻿@model HomeModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-box">
+    <h1>Entrar</h1>
+    <form id="loginForm" action="#" method="POST" onsubmit="validateLoginForm(event)" novalidate>
+        <input type="text" id="email" placeholder="Digite seu e-mail" name="email" required>
+        <div class="invalid-feedback" id="emailError" style="display: none;">
+            O e-mail deve conter "@@" e terminar com ".com".
+        </div>
+
+        <input type="password" id="password" placeholder="Digite sua senha" name="password" required>
+        <div class="invalid-feedback" id="passwordError" style="display: none;">
+            A senha deve ter no mínimo 4 caracteres.
+        </div>
+
+        <input class="submitEntry" type="submit" value="Entrar">
+    </form>
+    <div class="register">
+        <a asp-area="" asp-controller="Home" asp-action="Register">Cadastrar</a>
+    </div>
+</div>
