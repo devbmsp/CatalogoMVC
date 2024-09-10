@@ -5,11 +5,12 @@
 <div class="container">
     <div class="register-box">
         <h1 class="text-center">Registre-se</h1>
-        <form class="needs-validation" id="registerForm" novalidate>
+
+        <form asp-controller="Home" asp-action="Criar" method="post" id="registerForm">
             <div class="row g-3">
                 <div class="col-md-6">
                     <label for="firstName" class="form-label">Primeiro Nome</label>
-                    <input type="text" class="form-control" id="firstName" required>
+                    <input type="text" asp-for="Name" class="form-control" id="firstName" required>
                     <div class="invalid-feedback">
                         Nome deve conter no mínimo 2 letras e não pode ter números.
                     </div>
@@ -17,7 +18,7 @@
 
                 <div class="col-md-6">
                     <label for="email" class="form-label">E-mail</label>
-                    <input type="text" class="form-control" id="email" required>
+                    <input type="text" asp-for="Email"  class="form-control" id="email" required>
                     <div class="invalid-feedback">
                         O e-mail deve conter "@@" e terminar com ".com".
                     </div>
@@ -25,7 +26,7 @@
 
                 <div class="col-md-6">
                     <label for="validationCustom04" class="form-label">Genêro</label>
-                    <select class="form-select" id="validationCustom04" required>
+                    <select class="form-select" type="text" asp-for="Gender" id="validationCustom04" required>
                         <option selected disabled value="">Selecione seu gênero</option>
                         <option>Masculino</option>
                         <option>Feminino</option>
@@ -37,7 +38,7 @@
 
                 <div class="col-md-6">
                     <label for="postalCode" class="form-label">Código Postal</label>
-                    <input type="text" class="form-control" id="postalCode" required>
+                    <input type="text" asp-for="Zip"  class="form-control" id="postalCode" required>
                     <div class="invalid-feedback">
                         Código Postal deve estar no formato 00000-000.
                     </div>
@@ -45,7 +46,7 @@
 
                 <div class="col-md-6">
                     <label for="password" class="form-label">Senha</label>
-                    <input type="password" class="form-control" id="password" required>
+                    <input type="text" asp-for="Password" class="form-control" id="password" required>
                     <div class="invalid-feedback">
                         A senha deve ter no mínimo 4 caracteres.
                     </div>
@@ -55,7 +56,7 @@
                     <label for="validationCustomUsername" class="form-label">Username</label>
                     <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@@</span>
-                        <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                        <input type="text" asp-for="Username"  class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
                         <div class="invalid-feedback">
                             Por favor escolha um nome de usuário.
                         </div>
@@ -73,11 +74,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12">
-                    <button class="btn btn-primary w-100" type="button" onclick="validateRegisterForm()">Cadastrar</button>
-                </div>
+                    <button class="btn btn-primary w-100" type="submit" onclick="validateRegisterForm()">Cadastrar</button>
+                
             </div>
         </form>
+
     </div>
 </div>

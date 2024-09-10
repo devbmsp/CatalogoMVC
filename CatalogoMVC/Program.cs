@@ -1,3 +1,8 @@
+using CatalogoMVC.Data;
+using CatalogoMVC.Repositorio;
+using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
+
 namespace CatalogoMVC
 {
     public class Program
@@ -5,6 +10,11 @@ namespace CatalogoMVC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddEntityFrameworkSqlServer().AddDbContext<BancoContext>(o =>
+            o.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
+
+            builder.Services.AddScoped<Interface, UsersRepositorio>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();

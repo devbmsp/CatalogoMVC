@@ -1,11 +1,10 @@
-﻿@model HomeModel
-@{
-    ViewData["Title"] = "Login";
-}
+﻿
+
 
 <div class="login-box">
     <h1>Entrar</h1>
     <form id="loginForm" action="#" method="POST" onsubmit="validateLoginForm(event)" novalidate>
+        <input type="hidden" asp-for="Id"/>
         <input type="text" id="email" placeholder="Digite seu e-mail" name="email" required>
         <div class="invalid-feedback" id="emailError" style="display: none;">
             O e-mail deve conter "@@" e terminar com ".com".
