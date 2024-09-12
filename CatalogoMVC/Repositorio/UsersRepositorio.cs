@@ -1,6 +1,7 @@
 ﻿using CatalogoMVC.Data;
 using CatalogoMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace CatalogoMVC.Repositorio
 {
@@ -38,24 +39,45 @@ namespace CatalogoMVC.Repositorio
 
         }
 
-        public bool Deletar(int Id)
+        public HomeModel BuscarLogin(string email)
         {
-            HomeModel userDB = ListarPorId(Id);
-            if (userDB == null) throw new System.Exception("Error !");
-            _bancoContext.Users.Remove(userDB);
-            _bancoContext.SaveChanges();
-            return true;
+            return _bancoContext.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
+
+        }
+       
+
+
+
+        public bool Deletar(int Id)
+        {       
+                
+                HomeModel userDB = ListarPorId(Id);
+                
+                if (userDB == null)
+                {
+                    return false;
+                }             
+                _bancoContext.Users.Remove(userDB);
+                _bancoContext.SaveChanges();
+
+                return true;
+            
+
 
         }
 
-       
+
 
         public HomeModel ListarPorId(int Id)
         {
+          
             return _bancoContext.Users.FirstOrDefault(x => x.Id == Id);
         }
 
-
+        public List<HomeModel> BuscarId()
+        {
+            return _bancoContext.Users.ToList();
+        }
     }
 }
 

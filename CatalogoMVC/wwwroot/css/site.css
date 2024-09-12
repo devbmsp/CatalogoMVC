@@ -633,7 +633,7 @@ footer .last {
     height: 40px;
     width: 40px;
     position:relative;
-    margin-left:700px
+    margin-left:600px
 }
 
 
@@ -654,6 +654,7 @@ footer .last {
 
 .btn-edit {
     background-color: green;
+    width: 850px;
 }
 
 .btn-edit:hover {
@@ -662,6 +663,7 @@ footer .last {
 
 .btn-delete {
     background-color: #e74c3c;
+    width: 850px;
 }
 
 .btn-delete:hover {

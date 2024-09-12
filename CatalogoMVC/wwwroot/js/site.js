@@ -104,12 +104,15 @@ function filterCatalog() {
     cardItems.forEach(item => {
         const title = item.querySelector('h3').textContent.toLowerCase();
         if (title.includes(searchInput)) {
-            item.style.display = 'block';
+            item.style.visibility = 'visible'; 
+            item.style.position = 'relative';
         } else {
-            item.style.display = 'none';
+            item.style.visibility = 'hidden'; 
+            item.style.position = 'absolute';
         }
     });
 }
+
 
 function adicionarPost() {
     document.getElementById('addPostModal').style.display = 'flex';

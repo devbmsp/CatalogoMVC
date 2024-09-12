@@ -1,5 +1,7 @@
 using CatalogoMVC.Data;
+using CatalogoMVC.Helper;
 using CatalogoMVC.Repositorio;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 
@@ -14,7 +16,17 @@ namespace CatalogoMVC
             builder.Services.AddEntityFrameworkSqlServer().AddDbContext<BancoContext>(o =>
             o.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));
 
+            builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            builder.Services.AddScoped<ISessao, Sessao>();
+            builder.Services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
+
+
             builder.Services.AddScoped<Interface, UsersRepositorio>();
+
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -35,6 +47,8 @@ namespace CatalogoMVC
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",
